@@ -1,9 +1,9 @@
 [project]
 name = "janim-folder"
-version = "0.1.0"
+version = "0.2.0"
 description = "Add your description here"
 readme = "README.md"
 requires-python = ">=3.12"
 dependencies = [
-    "janim[gui]>=3.10.2",
+    "janim[gui]>=4.3.0",
 ]

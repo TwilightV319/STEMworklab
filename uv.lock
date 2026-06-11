@@ -227,14 +227,14 @@ gui = [
 
 [[package]]
 name = "janim-folder"
-version = "0.1.0"
+version = "0.2.0"
 source = { virtual = "." }
 dependencies = [
     { name = "janim", extra = ["gui"] },
 ]
 
 [package.metadata]
-requires-dist = [{ name = "janim", extras = ["gui"], specifier = ">=3.10.2" }]
+requires-dist = [{ name = "janim", extras = ["gui"], specifier = ">=4.3.0" }]
 
 [[package]]
 name = "markdown-it-py"
