@@ -1,28 +1,17 @@
-import os
-import sys
-from pathlib import Path
+from janim.imports import *
 
-# 1. 检查 Python 架构
-print(f"Python: {sys.version} ({'64-bit' if sys.maxsize > 2**32 else '32-bit'})")
+class TestScene(Timeline):
+    def construct(self):
+        NumberPlane(faded_line_ratio=1).show()
 
-# 2. 检查 PySide6 路径
-try:
-    from PySide6 import QtCore
-    print(f"✅ PySide6 loaded: {QtCore.__file__}")
-    print(f"✅ Qt version: {QtCore.qVersion()}")
-    
-    # 3. 检查关键 DLL 是否可访问
-    pyside_dir = Path(QtCore.__file__).parent
-    dlls = ["Qt6Core.dll", "Qt6Gui.dll", "Qt6Widgets.dll"]
-    for dll in dlls:
-        p = pyside_dir / dll
-        print(f"{'✅' if p.exists() else '❌'} {dll}: {p}")
-    
-    # 4. 检查平台插件
-    plugins = pyside_dir / "plugins" / "platforms" / "qwindows.dll"
-    print(f"{'✅' if plugins.exists() else '❌'} qwindows.dll: {plugins}")
+        square1 = Square(color=RED, fill_alpha=1)
+        square2 = Square(color=GREEN, fill_alpha=1)
+        square3 = Square(color=BLUE, fill_alpha=1)
 
-except Exception as e:
-    print(f"❌ ImportError: {e}")
-    import traceback
-    traceback.print_exc()
+        square2.points.rotate(PI / 2, axis=UP)
+        square3.points.rotate(PI / 2, axis=RIGHT)
+
+        squares = Group(square1, square2, square3)
+        squares.show()
+
+        self('camera')
